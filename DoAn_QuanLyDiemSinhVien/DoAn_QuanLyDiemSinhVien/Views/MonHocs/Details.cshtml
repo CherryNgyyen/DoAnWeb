@@ -1,0 +1,41 @@
+﻿@model DoAn_QuanLyDiemSinhVien.Models.MonHoc
+
+@{
+    ViewBag.Title = "Chi tiết môn học";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+<h2>Chi tiết môn học</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên môn học
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenMH)
+        </dd>
+
+        <dt>
+            Số tín chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTC)
+        </dd>
+
+        <dt>
+            Học kỳ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocKy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa môn học", "Edit", new { id = Model.MaMH }) |
+    @Html.ActionLink("Trở về trang trước", "Index")
+</p>

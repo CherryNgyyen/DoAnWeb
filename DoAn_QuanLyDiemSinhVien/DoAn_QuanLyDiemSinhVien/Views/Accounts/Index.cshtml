@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DoAn_QuanLyDiemSinhVien.Models.Account>
+
+@{
+    ViewBag.Title = "Danh sách nhân sự";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+<h2>Danh sách nhân sự</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới nhân sự", "Create")
+</p>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="background-color:whitesmoke">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Họ và tên
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Quyền Admin
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoVaTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa nhân sự", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Chi tiết nhân sự", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Xóa nhân sự", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

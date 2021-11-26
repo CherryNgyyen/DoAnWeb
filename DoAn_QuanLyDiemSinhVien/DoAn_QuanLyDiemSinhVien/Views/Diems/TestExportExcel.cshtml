@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "TestExportExcel";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+@using (Html.BeginForm("ExportToExcel", "Diems", FormMethod.Post))
+{
+    <input type="submit" value="Xuất File Excel" class="button" />
+}
+

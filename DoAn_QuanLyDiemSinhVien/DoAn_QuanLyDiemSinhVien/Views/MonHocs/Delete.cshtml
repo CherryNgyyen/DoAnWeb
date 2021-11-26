@@ -1,0 +1,47 @@
+﻿@model DoAn_QuanLyDiemSinhVien.Models.MonHoc
+
+@{
+    ViewBag.Title = "Xóa môn học";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+<h2>Xóa môn học</h2>
+
+<h3>Bạn có chắc muốn xóa môn học này không?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên môn học
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenMH)
+        </dd>
+
+        <dt>
+            Số tín chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTC)
+        </dd>
+
+        <dt>
+            Học kỳ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HocKy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa môn học" class="btn btn-priamry" /> |
+            @Html.ActionLink("Trở về trang trước", "Index")
+        </div>
+    }
+</div>

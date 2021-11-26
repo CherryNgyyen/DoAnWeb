@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutTraCuuDiem.cshtml";
+}
+
+<div class="row bg-gradient-primary">
+    <img src="~/Content/anh/header.png" style="margin-left:auto; margin-right:auto;" />
+</div>
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-lg-block">
+                            <img src="~/Content/anh/logo.png" height="320px" style="display:block; margin-left:auto; margin-right:auto; margin-top:22px; margin-bottom:auto" />
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
+                                </div>
+                                <form class="user" action="/QuanLyDiem/Login" method="post">
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control form-control-user"
+                                               name="Email"
+                                               placeholder="Email của bạn...">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" required class="form-control form-control-user"
+                                               name="MatKhau" placeholder="Mật khẩu">
+                                    </div>
+                                    <input type="submit" id="btnSubmit" value="Đăng nhập" class="btn btn-primary btn-user btn-block" />
+                                </form>
+                                @if (ViewBag.error != null)
+                                {
+                                    <p style="color:red">@ViewBag.error</p>
+                                }
+                                <hr>
+                                <div class="text-center">
+                                    @Html.ActionLink("Quên mật khẩu.", "QuenMatKhau", "QuanLyDiem", null, new { @class = "small" })
+                                </div>
+                                <div class="text-center">
+                                    @Html.ActionLink("Tra cứu điểm sinh viên.", "TraCuu", "TraCuuDiem", null, new { @class = "small" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

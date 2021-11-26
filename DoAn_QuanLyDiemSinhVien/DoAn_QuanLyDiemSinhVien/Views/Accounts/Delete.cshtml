@@ -1,0 +1,63 @@
+﻿@model DoAn_QuanLyDiemSinhVien.Models.Account
+
+@{
+    ViewBag.Title = "Xóa nhân sự";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+<h2>Xóa nhân sự</h2>
+
+<h3>Bạn có chắc muốn xóa nhân sự này không?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            Họ và tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoVaTen)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            Admin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa nhân sự" class="btn btn-primary" /> |
+            @Html.ActionLink("Trở về trang trước", "Index")
+        </div>
+    }
+</div>

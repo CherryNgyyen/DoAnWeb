@@ -1,0 +1,124 @@
+﻿@model IEnumerable<DoAn_QuanLyDiemSinhVien.Models.SinhVien>
+@{
+    ViewBag.Title = "Tra cứu điểm";
+    Layout = "~/Views/Shared/_LayoutTraCuuDiem.cshtml";
+}
+
+<div class="row bg-gradient-primary">
+    <img src="~/Content/anh/header.png" style="margin-left:auto; margin-right:auto;" />
+</div>
+
+<div class="container-fluid">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Tra cứu thông tin</h1>
+                                </div>
+                                <form class="user" action="/TraCuuDiem/TraCuu" method="post">
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control form-control-user"
+                                               name="mssv"
+                                               placeholder="Nhập mã số sinh viên....">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control form-control-user"
+                                               name="NgaySinh" placeholder="Nhập ngày sinh... VD: 01/01/1998">
+                                    </div>
+                                    <input type="submit" id="btnSubmit" value="Tra cứu điểm" class="btn btn-primary btn-user btn-block" />
+                                </form>
+                                @if (ViewBag.Error != null)
+                                {
+                                    <p style="color:red">@ViewBag.Error</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @if (Session["SinhVien"] != null)
+        {
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Kết quả tìm kiếm</h1>
+                                    </div>
+                                    <div class="text-center">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="background-color:whitesmoke">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Mã sinh viên
+                                                    </th>
+                                                    <th>
+                                                        Họ tên
+                                                    </th>
+                                                    <th>
+                                                        Ngày sinh
+                                                    </th>
+                                                    <th>
+                                                        Email
+                                                    </th>
+                                                    <th>
+                                                        Lớp
+                                                    </th>
+                                                    <th>
+                                                        Điểm trung bình
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            @foreach (var item in ViewBag.list)
+                                            {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            @item.MaSV
+                                                        </td>
+                                                        <td>
+                                                            @item.HoTen
+                                                        </td>
+                                                        <td>
+                                                            @item.NgaySinh
+                                                        </td>
+                                                        <td>
+                                                            @item.Email
+                                                        </td>
+                                                        <td>
+                                                            @item.Lop
+                                                        </td>
+                                                        <td>
+                                                            @item.DiemTB
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink("Xem chi tiết", "ChiTiet", new { id = item.MaSV })
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            }
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

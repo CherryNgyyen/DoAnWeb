@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/Shared/_LayoutQuanLyDiem.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="p-5">
+            <div class="">
+                <h1 class="h4 text-gray-900 mb-4">Đổi mật khẩu</h1>
+            </div>
+            <form class="user" action="/QuanLyDiem/DoiMatKhau" method="post">
+                <div class="form-group">
+                    <input type="password" required class="form-control form-control-user"
+                            name="MatKhauCu"
+                            placeholder="Nhập mật khẩu cũ...">
+                </div>
+                <div class="form-group">
+                    <input type="password" required class="form-control form-control-user" id="MatKhauMoi"
+                            name="MatKhauMoi"
+                            placeholder="Nhập mật khẩu mới...">
+                    <span id="MatKhauMoi_error" style="color:red"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" required class="form-control form-control-user" id="XacNhanMatKhau"
+                            name="XacNhanMatKhau"
+                            placeholder="Xác nhận mật khẩu mới...">
+                    <span id="XacNhanMatKhau_error" style="color:red"></span>
+                </div>
+                <input type="submit" id="btnSubmit" value="Đổi mật khẩu" class="btn btn-primary btn-user btn-block" onclick="return validate();" />
+
+                @if (ViewBag.tb != null)
+                {
+                    <p style="color:red">@ViewBag.tb</p>
+                }
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Lấy giá trị của một input
+    function getValue(id) {
+        return document.getElementById(id).value.trim();
+    }
+
+    // Hiển thị lỗi
+    function showError(key, mess) {
+        document.getElementById(key + '_error').innerHTML = mess;
+    }
+
+    function validate() {
+        var flag = true;
+
+        var password = getValue('MatKhauMoi');
+        var repassword = getValue('XacNhanMatKhau');
+        if (password == '' || password.length < 8 || password != repassword) {
+            flag = false;
+
+            showError('MatKhauMoi', 'Vui lòng kiểm tra lại password');
+        }
+    }
+</script>
+
+

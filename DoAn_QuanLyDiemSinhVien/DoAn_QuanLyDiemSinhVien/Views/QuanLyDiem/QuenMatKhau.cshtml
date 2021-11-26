@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Quên mật khẩu";
+    Layout = "~/Views/Shared/_LayoutDangNhap.cshtml";
+}
+
+<div class="row bg-gradient-primary">
+    <img src="~/Content/anh/header.png" style="margin-left:auto; margin-right:auto;" />
+</div>
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-lg-block">
+                            <img src="~/Content/anh/logo.png" height="320px" style="display:block; margin-left:auto; margin-right:auto; margin-top:22px; margin-bottom:auto" />
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Quên mật khẩu</h1>
+                                </div>
+                                <form class="user" action="/QuanLyDiem/QuenMatKhau" method="post">
+                                    <div class="form-group">
+                                        <input type="text" required class="form-control form-control-user"
+                                               name="Email"
+                                               placeholder="Nhập Email đăng ký tài khoản của bạn...">
+                                    </div>
+                                    <input type="submit" id="btnSubmit" value="Thay đổi mật khẩu" class="btn btn-primary btn-user btn-block" />
+                                </form>
+                                @if (ViewBag.tb != null)
+                                {
+                                    <p style="color:red">@ViewBag.tb</p>
+                                }
+                            </div>
+                            <div class="text-center">
+                                @Html.ActionLink("Đã lấy lại được mật khẩu? Đăng nhập.", "Login", "QuanLyDiem", null, new { @class = "small" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
